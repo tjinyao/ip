@@ -24,10 +24,12 @@ public class Meal {
 
         while (true) {
             String line = sc.nextLine().trim();
+            try {
+
             if (line.equals("bye")) {
                 break;
             }
-            if (line.equals("list")) {
+            else if (line.equals("list")) {
                 System.out.println("Here are the tasks in your list:");
                 for (int i = 0; i < items.size(); i++) {
                     System.out.println((i + 1) + "." + items.get(i).toString());
@@ -36,30 +38,40 @@ public class Meal {
                 continue;
             }
 
-            if (line.startsWith("mark ")) {
+            else if (line.startsWith("mark ")) {
                 String numStr = line.substring(5).trim();
                 int num = Integer.parseInt(numStr) - 1;
+                if (num < 0 || num >= items.size()) {
+                    throw new BadInputException("Number is out of range");
+                }
                 System.out.println(SEP);
                 System.out.println(items.get(num).mark());
                 System.out.println(SEP);
                 continue;
             }
 
-            if (line.startsWith("unmark ")) {
+            else if (line.startsWith("unmark ")) {
                 String numStr = line.substring(7).trim();
                 int num = Integer.parseInt(numStr) - 1;
+                if (num < 0 || num > items.size()) {
+                    throw new BadInputException("Number is out of range");
+                }
                 System.out.println(SEP);
                 System.out.println(items.get(num).unmark());
                 System.out.println(SEP);
                 continue;
             }
 
-            if (line.startsWith("todo ")) {
-                Task todoTask = new ToDo(line.substring(5).trim());
+            else if (line.startsWith("todo ")) {
+                String name = line.substring(5).trim();
+                if (name.isEmpty()) {
+                    throw new EmptyInputException("Description can't be empty.");
+                }
+                Task todoTask = new ToDo(name);
                 addTask(todoTask);
             }
 
-            if (line.startsWith("deadline ")) {
+            else if (line.startsWith("deadline ")) {
                 String[] parts = line.substring(9).trim().split("/by");
                 String name = parts[0].trim();
                 String by = parts[1].trim();
@@ -67,7 +79,7 @@ public class Meal {
                 addTask(deadlineTask);
             }
 
-            if (line.startsWith("event ")) {
+            else if (line.startsWith("event ")) {
                 String[] parts = line.substring(6).trim().split("/from");
                 String name = parts[0].trim();
                 String rest = parts[1].trim();
@@ -76,6 +88,16 @@ public class Meal {
                 String to = parts2[1].trim();
                 Event eventTask = new Event(name, from, to);
                 addTask(eventTask);
+            }
+            else {
+                throw new BadInputException("Bad input :(");
+            }
+        }
+            catch (Exception e) {
+                System.out.println(SEP);
+                System.out.println(e.getMessage());
+                System.out.println(SEP);
+                continue;
             }
         }
 
