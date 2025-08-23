@@ -17,10 +17,18 @@ public class Task {
         + this.toString());
     }
 
+    public void silentMark() {
+        this.marked = true;
+    }
+
     public String unmark() {
         this.marked = false;
         return ("OK, I've marked this task as not done yet:\n"
                 + this.toString());
+    }
+
+    public boolean isMarked() {
+        return this.marked;
     }
 
     @Override
