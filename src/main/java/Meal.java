@@ -17,6 +17,18 @@ public class Meal {
         System.out.println(SEP);
     }
 
+    public static void deleteTask(int i) {
+        Task removedTask = items.get(i);
+        items.remove(i);
+        System.out.println(SEP);
+        System.out.println("Got it. I've removed this task:\n"
+                + removedTask.toString()
+                + "\nNow you have "
+                + items.size()
+                + " tasks in the list.");
+        System.out.println(SEP);
+    }
+
     public static void main(String[] args) {
 
         System.out.println("Hello! I'm Meal\n"
@@ -59,6 +71,16 @@ public class Meal {
                 System.out.println(SEP);
                 System.out.println(items.get(num).unmark());
                 System.out.println(SEP);
+                continue;
+            }
+
+            else if (line.startsWith("delete ")) {
+                String numStr = line.substring(7).trim();
+                int num = Integer.parseInt(numStr) - 1;
+                if (num < 0 || num > items.size()) {
+                    throw new BadInputException("Number is out of range");
+                }
+                deleteTask(num);
                 continue;
             }
 
