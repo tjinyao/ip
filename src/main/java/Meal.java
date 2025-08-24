@@ -2,6 +2,8 @@ import java.nio.file.*;
 import java.io.IOException;
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Meal {
     public static String SEP = "____________________________________________________________";
@@ -38,12 +40,12 @@ public class Meal {
             return String.format("T | %s | %s", done, t.getTaskName());
         }
         else if (t instanceof Deadline) {
-            String by = ((Deadline) t).getDeadline();
+            LocalDate by = ((Deadline) t).getDeadline();
             return String.format("D | %s | %s | %s", done, t.getTaskName(), by);
         }
         else if (t instanceof Event) {
-            String from = ((Event) t).getStartTime();
-            String to = ((Event) t).getEndTime();
+            LocalDate from = ((Event) t).getStartTime();
+            LocalDate to = ((Event) t).getEndTime();
             return String.format("E | %s | %s | %s | %s", done, t.getTaskName(), from, to);
         }
         return String.format("? | %s | %s", done, t.getTaskName());
