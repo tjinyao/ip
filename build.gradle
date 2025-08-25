@@ -39,3 +39,12 @@ shadowJar {
 run{
     standardInput = System.in
 }
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'Meal.Meal'
+    }
+    // (optional) nicer filename:
+    archiveBaseName = 'Duke'
+    archiveVersion = '0.1'
+}
