@@ -21,26 +21,31 @@ public class TaskList {
 
     public List<Task> all() { return Collections.unmodifiableList(items); }
 
+    /** Adds a task */
     public Task add(Task t) {
         items.add(t);
         return t;
     }
 
+    /** Deletes a task */
     public Task delete(int oneBasedIndex) {
         int i = toZeroBased(oneBasedIndex);
         return items.remove(i);
     }
 
+    /** Marks a task */
     public String mark(int oneBasedIndex) {
         int i = toZeroBased(oneBasedIndex);
         return items.get(i).mark();
     }
 
+    /** Unmarks a task */
     public String unmark(int oneBasedIndex) {
         int i = toZeroBased(oneBasedIndex);
         return items.get(i).unmark();
     }
 
+    /** Converts one based to zero based indexing */
     private int toZeroBased(int oneBased) {
         int i = oneBased - 1;
         if (i < 0 || i >= items.size()) throw new BadInputException("Number is out of range");
