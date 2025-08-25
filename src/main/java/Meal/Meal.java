@@ -1,9 +1,6 @@
-import java.nio.file.*;
-import java.io.IOException;
+package Meal;
+
 import java.util.Scanner;
-import java.util.ArrayList;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 public class Meal {
     private static final String SEP = "____________________________________________________________";

@@ -1,3 +1,5 @@
+package Meal;
+
 public class Task {
     private String taskName;
     private boolean marked;

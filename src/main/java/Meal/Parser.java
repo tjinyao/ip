@@ -1,3 +1,5 @@
+package Meal;
+
 public class Parser {
 
     public static Command parse(String line) {
@@ -17,7 +19,7 @@ public class Parser {
         throw new BadInputException("Bad input :(");
     }
 
-    // -------- helpers --------
+    //helpers
     static int parseNum(String s) {
         try { return Integer.parseInt(s); }
         catch (NumberFormatException e) {
