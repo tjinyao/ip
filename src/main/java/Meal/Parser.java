@@ -32,7 +32,7 @@ interface Command {
     boolean execute(TaskList tasks, Ui ui, Storage storage);
 }
 
-/* bye */
+/** bye */
 class ByeCommand implements Command {
     public boolean execute(TaskList tasks, Ui ui, Storage storage) {
         ui.showGoodbye();
@@ -40,7 +40,7 @@ class ByeCommand implements Command {
     }
 }
 
-/* list */
+/** list */
 class ListCommand implements Command {
     public boolean execute(TaskList tasks, Ui ui, Storage storage) {
         ui.showList(tasks);
@@ -48,7 +48,7 @@ class ListCommand implements Command {
     }
 }
 
-/* mark N */
+/** mark N */
 class MarkCommand implements Command {
     private final int n; // 1-based
     MarkCommand(String arg) { this.n = Parser.parseNum(arg); }
@@ -60,7 +60,7 @@ class MarkCommand implements Command {
     }
 }
 
-/* unmark N */
+/** unmark N */
 class UnmarkCommand implements Command {
     private final int n; // 1-based
     UnmarkCommand(String arg) { this.n = Parser.parseNum(arg); }
@@ -72,7 +72,7 @@ class UnmarkCommand implements Command {
     }
 }
 
-/* delete N */
+/** delete N */
 class DeleteCommand implements Command {
     private final int n; // 1-based
     DeleteCommand(String arg) { this.n = Parser.parseNum(arg); }
@@ -85,7 +85,7 @@ class DeleteCommand implements Command {
     }
 }
 
-/* todo NAME */
+/** todo NAME */
 class TodoCommand implements Command {
     private final String name;
     TodoCommand(String name) {
@@ -102,7 +102,7 @@ class TodoCommand implements Command {
     }
 }
 
-/* deadline NAME /by YYYY-MM-DD */
+/** deadline NAME /by YYYY-MM-DD */
 class DeadlineCommand implements Command {
     private final String name, by;
     DeadlineCommand(String raw) {
@@ -121,7 +121,7 @@ class DeadlineCommand implements Command {
     }
 }
 
-/* event NAME /from YYYY-MM-DD /to YYYY-MM-DD */
+/** event NAME /from YYYY-MM-DD /to YYYY-MM-DD */
 class EventCommand implements Command {
     private final String name, from, to;
     EventCommand(String raw) {

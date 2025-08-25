@@ -6,7 +6,7 @@ public class Ui {
     private static final String SEP = "____________________________________________________________";
     private final Scanner sc = new Scanner(System.in);
 
-    /* Read one trimmed command line from user */
+    /** Read one trimmed command line from user */
     public String readCommand() {
         return sc.nextLine().trim();
     }
@@ -35,7 +35,7 @@ public class Ui {
         showLine();
     }
 
-    /* Print the current list with numbering */
+    /** Print the current list with numbering */
     public void showList(TaskList tasks) {
         showLine();
         System.out.println("Here are the tasks in your list:");
@@ -45,7 +45,7 @@ public class Ui {
         showLine();
     }
 
-    /* After adding a task */
+    /** After adding a task */
     public void showAdd(Task t, int size) {
         showLine();
         System.out.println("Got it. I've added this task:\n" + t);
@@ -53,7 +53,7 @@ public class Ui {
         showLine();
     }
 
-    /* After deleting a task */
+    /** After deleting a task */
     public void showDelete(Task removed, int size) {
         showLine();
         System.out.println("Got it. I've removed this task:\n" + removed);
@@ -61,7 +61,7 @@ public class Ui {
         showLine();
     }
 
-    /* For mark/unmark which already return a user-facing string */
+    /** For mark/unmark which already return a user-facing string */
     public void showTextBlock(String s) {
         showLine();
         System.out.println(s);
