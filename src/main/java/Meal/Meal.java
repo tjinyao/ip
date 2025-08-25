@@ -14,8 +14,7 @@ public class Meal {
         storage = new Storage(filePath);
         try {
             tasks = new TaskList(storage.load());
-        }
-        catch (MealException e) {
+        } catch (MealException e) {
             ui.showLoadingError();
             tasks = new TaskList();
         }

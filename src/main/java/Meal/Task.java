@@ -16,7 +16,7 @@ public class Task {
     public String mark() {
         this.marked = true;
         return ("Nice! I've marked this task as done:\n"
-        + this.toString());
+                + this.toString());
     }
 
     public void silentMark() {
