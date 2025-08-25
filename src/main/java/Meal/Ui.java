@@ -68,6 +68,17 @@ public class Ui {
         showLine();
     }
 
+    /** Show find results */
+    public void showFindResults(java.util.List<Task> matches) {
+        showLine();
+        System.out.println("Here are the matching tasks in your list:");
+        for (int i = 0; i < matches.size(); i++) {
+            System.out.println((i + 1) + "." + matches.get(i));
+        }
+        showLine();
+    }
+
+
     public void close() {
         sc.close();
     }

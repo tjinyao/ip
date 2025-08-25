@@ -45,6 +45,18 @@ public class TaskList {
         return items.get(i).unmark();
     }
 
+    /** Find a keyword */
+    public java.util.List<Task> find(String keyword) {
+        String k = keyword.toLowerCase();
+        java.util.ArrayList<Task> out = new java.util.ArrayList<>();
+        for (Task t : items) {
+            if (t.getTaskName().toLowerCase().contains(k)) {
+                out.add(t);
+            }
+        }
+        return out;
+    }
+
     /** Converts one based to zero based indexing */
     private int toZeroBased(int oneBased) {
         int i = oneBased - 1;

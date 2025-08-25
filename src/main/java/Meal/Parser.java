@@ -15,6 +15,7 @@ public class Parser {
         if (line.startsWith("todo "))    return new TodoCommand(line.substring(5).trim());
         if (line.startsWith("deadline "))return new DeadlineCommand(line.substring(9).trim());
         if (line.startsWith("event "))   return new EventCommand(line.substring(6).trim());
+        if (line.startsWith("find "))    return new FindCommand(line.substring(5).trim());
 
         throw new BadInputException("Bad input :(");
     }
@@ -140,5 +141,22 @@ class EventCommand implements Command {
         ui.showAdd(t, tasks.size());
         storage.save(tasks.all());
         return false;
+    }
+}
+
+class FindCommand implements Command {
+    private final String keyword;
+
+    FindCommand(String keyword) {
+        if (keyword == null || keyword.isBlank()) {
+            throw new BadInputException("Usage: find <keyword>");
+        }
+        this.keyword = keyword.trim();
+    }
+
+    @Override
+    public boolean execute(TaskList tasks, Ui ui, Storage storage) {
+        ui.showFindResults(tasks.find(keyword));
+        return false; // no exit; no saving needed
     }
 }
