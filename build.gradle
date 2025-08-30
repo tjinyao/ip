@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'application'
     id 'com.github.johnrengelman.shadow' version '7.1.2'
+    id 'checkstyle'
 }
 
 repositories {
@@ -47,4 +48,8 @@ jar {
     // (optional) nicer filename:
     archiveBaseName = 'Duke'
     archiveVersion = '0.1'
+}
+
+checkstyle {
+    toolVersion = '11.0.0'
 }
