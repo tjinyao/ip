@@ -72,9 +72,11 @@ public class Ui {
     /**
      * For mark/unmark which already return a user-facing string
      */
-    public void showTextBlock(String s) {
+    public void showTextBlock(String... lines) {
         showLine();
-        System.out.println(s);
+        for (String line : lines) {
+            System.out.println(line);
+        }
         showLine();
     }
 
