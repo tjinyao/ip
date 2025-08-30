@@ -57,9 +57,11 @@ public class GuiUi extends Ui {
     }
 
     @Override
-    public void showTextBlock(String s) {
+    public void showTextBlock(String... lines) {
         line();
-        buf.append(s).append('\n');
+        for (String s : lines) {
+            buf.append(s).append('\n');
+        }
         line();
     }
 
