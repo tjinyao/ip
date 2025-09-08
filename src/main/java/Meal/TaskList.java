@@ -9,11 +9,13 @@ public class TaskList {
 
     public TaskList() {
         this.items = new ArrayList<>();
+        assert items != null : "Items list must be initialised";
     }
 
     public TaskList(List<Task> initial) {
         this.items = new ArrayList<>();
         if (initial != null) this.items.addAll(initial);
+        assert items != null : "Items list must be initialised";
     }
 
     public int size() {
@@ -21,6 +23,8 @@ public class TaskList {
     }
 
     public Task get(int indexZeroBased) {
+        assert indexZeroBased >= 0 : "Index must be more than zero";
+        assert indexZeroBased < items.size() : "Index must be within bounds";
         return items.get(indexZeroBased);
     }
 
