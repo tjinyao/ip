@@ -26,10 +26,13 @@ test {
         showStackTraces true
         showStandardStreams = false
     }
+
+    jvmArgs "-ea"
 }
 
 application {
     mainClass.set("ui.Launcher")
+    applicationDefaultJvmArgs = ["-ea"]
 }
 
 shadowJar {
