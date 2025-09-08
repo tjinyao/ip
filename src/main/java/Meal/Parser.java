@@ -16,6 +16,7 @@ public class Parser {
         if (line.startsWith("deadline ")) return new DeadlineCommand(line.substring(9).trim());
         if (line.startsWith("event ")) return new EventCommand(line.substring(6).trim());
         if (line.startsWith("find ")) return new FindCommand(line.substring(5).trim());
+        if (line.equals("help")) return new HelpCommand();
 
         throw new BadInputException("Bad input :(");
     }
@@ -187,5 +188,24 @@ class FindCommand implements Command {
     public boolean execute(TaskList tasks, Ui ui, Storage storage) {
         ui.showFindResults(tasks.find(keyword));
         return false; // no exit; no saving needed
+    }
+}
+
+class HelpCommand implements Command {
+
+    public boolean execute (TaskList tasks, Ui ui, Storage storage) {
+        ui.showTextBlock("""
+            Commands:
+              list
+              todo <name>
+              deadline <name> /by <yyyy-mm-dd>
+              event <name> /from <start> /to <end>
+              delete <index>
+              mark <index> / unmark <index>
+              find <keyword>
+              help
+              bye
+            """);
+        return false;
     }
 }

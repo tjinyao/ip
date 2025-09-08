@@ -92,7 +92,6 @@ public class Ui {
         showLine();
     }
 
-
     public void close() {
         sc.close();
     }
