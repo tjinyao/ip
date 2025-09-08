@@ -7,6 +7,11 @@ import java.util.List;
 
 public class Storage {
     private Path filePath;
+    private static final String TYPE_TODO = "T";
+    private static final String TYPE_DEADLINE = "D";
+    private static final String TYPE_EVENT = "E";
+    private static final String MARKED = "1";
+    private static final String UNMARKED = "0";
 
     public Storage(String filePath) {
         this.filePath = Paths.get(filePath);
@@ -23,33 +28,39 @@ public class Storage {
     public List<Task> load() {
         List<Task> items = new ArrayList<>();
         try {
-            if (!Files.exists(filePath)) return items;
-
+            if (!Files.exists(filePath)) {
+                return items;
+            }
             for (String line : Files.readAllLines(filePath)) {
-                if (line.isBlank()) continue;
-                String[] p = line.split("\\s*\\|\\s*");
-                String type = p[0];
-                boolean done = "1".equals(p[1]);
-                String name = p[2];
-
-                Task task;
-                if (type.equals("T")) {
-                    task = new ToDo(name);
-                } else if (type.equals("D")) {
-                    task = new Deadline(name, p[3]);
-                } else if (type.equals("E")) {
-                    task = new Event(name, p[3], p[4]);
-                } else {
-                    task = new ToDo(name);
+                if (line.isBlank()) {
+                    continue;
                 }
-
-                if (done) task.silentMark();
+                Task task = parseLine(line);
                 items.add(task);
             }
         } catch (IOException e) {
             System.out.println("Load failed: " + e.getMessage());
         }
         return items;
+    }
+
+    private Task parseLine(String line) {
+        String[] parts = line.split("\\s*\\|\\s*");
+        String type = parts[0];
+        boolean done = MARKED.equals(parts[1]);
+        String name = parts[2];
+
+        Task task = switch (type) {
+            case TYPE_TODO -> new ToDo(name);
+            case TYPE_DEADLINE -> new Deadline(name, parts[3]);
+            case TYPE_EVENT -> new Event(name, parts[3], parts[4]);
+            default -> throw new IllegalArgumentException("Unknown type: " + type);
+        };
+
+        if (done) {
+            task.silentMark();
+        }
+        return task;
     }
 
     public void save(List<Task> tasks) {
