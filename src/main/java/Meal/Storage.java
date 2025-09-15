@@ -13,6 +13,10 @@ public class Storage {
     private static final String MARKED = "1";
     private static final String UNMARKED = "0";
 
+    /**
+     * Initialises a new storage for the given filepath
+     * @param filePath
+     */
     public Storage(String filePath) {
         this.filePath = Paths.get(filePath);
         try {
@@ -25,6 +29,10 @@ public class Storage {
         }
     }
 
+    /**
+     * Loads tasks from the storage file
+     * @return a list of tasks to be loaded
+     */
     public List<Task> load() {
         List<Task> items = new ArrayList<>();
         try {
@@ -44,6 +52,11 @@ public class Storage {
         return items;
     }
 
+    /**
+     * Parses a single line from the storage file into a task
+     * @param line raw line of text
+     * @return the corresponding task object
+     */
     private Task parseLine(String line) {
         String[] parts = line.split("\\s*\\|\\s*");
         String type = parts[0];
@@ -63,6 +76,10 @@ public class Storage {
         return task;
     }
 
+    /**
+     * Saves all tasks into the storage file
+     * @param tasks list of tasks to save
+     */
     public void save(List<Task> tasks) {
         try {
             StringBuilder sb = new StringBuilder();
@@ -77,6 +94,11 @@ public class Storage {
         }
     }
 
+    /**
+     * Converts a task into its data string format for saving to the file
+     * @param t task to be converted
+     * @return its corresponding data string
+     */
     private String toDataString(Task t) {
         String done = t.isMarked() ? "1" : "0";
         if (t instanceof ToDo) {

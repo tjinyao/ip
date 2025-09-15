@@ -1,5 +1,8 @@
 package Meal;
 
+/**
+ * Parses user's input into a command
+ */
 public class Parser {
 
     public static Command parse(String line) {
@@ -21,7 +24,11 @@ public class Parser {
         throw new BadInputException("Bad input :(");
     }
 
-    //helpers
+    /**
+     * Parses a string into an integer for task number
+     * @param s the string containing a number
+     * @return parsed integer
+     */
     static int parseNum(String s) {
         try {
             return Integer.parseInt(s);
@@ -31,12 +38,15 @@ public class Parser {
     }
 }
 
+/**
+ * A command that can be executed
+ */
 interface Command {
     boolean execute(TaskList tasks, Ui ui, Storage storage);
 }
 
 /**
- * bye
+ * Bye command exits the application
  */
 class ByeCommand implements Command {
     public boolean execute(TaskList tasks, Ui ui, Storage storage) {
@@ -46,7 +56,7 @@ class ByeCommand implements Command {
 }
 
 /**
- * list
+ * List command displays all tasks
  */
 class ListCommand implements Command {
     public boolean execute(TaskList tasks, Ui ui, Storage storage) {
@@ -56,7 +66,7 @@ class ListCommand implements Command {
 }
 
 /**
- * mark N
+ * Mark command marks the n-th task as done
  */
 class MarkCommand implements Command {
     private final int n; // 1-based
@@ -73,7 +83,7 @@ class MarkCommand implements Command {
 }
 
 /**
- * unmark N
+ * Unmark command marks the n-th task as not done
  */
 class UnmarkCommand implements Command {
     private final int n; // 1-based
@@ -90,7 +100,7 @@ class UnmarkCommand implements Command {
 }
 
 /**
- * delete N
+ * Delete command deletes the n-th task from the list
  */
 class DeleteCommand implements Command {
     private final int n; // 1-based
@@ -108,7 +118,7 @@ class DeleteCommand implements Command {
 }
 
 /**
- * todo NAME
+ * Todo command creates a new todo task
  */
 class TodoCommand implements Command {
     private final String name;
@@ -128,7 +138,7 @@ class TodoCommand implements Command {
 }
 
 /**
- * deadline NAME /by YYYY-MM-DD
+ * Deadline command creates a new deadline task
  */
 class DeadlineCommand implements Command {
     private final String name, by;
@@ -150,7 +160,7 @@ class DeadlineCommand implements Command {
 }
 
 /**
- * event NAME /from YYYY-MM-DD /to YYYY-MM-DD
+ * Event command creates a new event task
  */
 class EventCommand implements Command {
     private final String name, from, to;
@@ -174,6 +184,9 @@ class EventCommand implements Command {
     }
 }
 
+/**
+ * Find command finds all tasks whose description contains the keyword
+ */
 class FindCommand implements Command {
     private final String keyword;
 
@@ -191,6 +204,9 @@ class FindCommand implements Command {
     }
 }
 
+/**
+ * Help command displays list of all available commands
+ */
 class HelpCommand implements Command {
 
     public boolean execute (TaskList tasks, Ui ui, Storage storage) {

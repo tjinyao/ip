@@ -8,6 +8,10 @@ Meal is your personal task manager chatbot. It helps you keep track of todos, de
 
 Adds a todo task to the to do list
 
+Format:
+```
+todo TASKNAME
+```
 Example:
 ```
 todo take a shower
@@ -23,6 +27,10 @@ Now you have 1 tasks in the list.
 
 Adds a deadline task to the to do list
 
+Format:
+```
+deadline TASKNAME /by YYYY-MM-DD
+```
 Example:
 ```
 deadline study for exam /by 2025-09-21
@@ -38,6 +46,10 @@ Now you have 2 tasks in the list.
 
 Adds an event task to the to do list
 
+Format:
+```
+event TASKNAME /from YYYY-MM-DD /to YYYY-MM-DD
+```
 Example:
 ```
 event finals /from 2025-10-21 /to 2025-10-28
@@ -53,6 +65,10 @@ Now you have 3 tasks in the list.
 
 Shows a list of all tasks
 
+Format:
+```
+list
+```
 Example:
 ```
 list
@@ -69,6 +85,10 @@ Here are the tasks in your list:
 
 Deletes one task from the list (by index)
 
+Format:
+```
+delete INDEX
+```
 Example:
 ```
 delete 2
@@ -84,6 +104,10 @@ Now you have 2 tasks in the list.
 
 Marks a task as done
 
+Format:
+```
+mark INDEX
+```
 Example:
 ```
 mark 1
@@ -98,6 +122,10 @@ Nice! I've marked this task as done:
 
 Unmarks a task
 
+Format:
+```
+unmark INDEX
+```
 Example:
 ```
 unmark 1
@@ -112,6 +140,10 @@ OK, I've marked this task as not done yet:
 
 Shows a list of tasks with the relevant keyword
 
+Format:
+```
+find TASKNAME
+```
 Example:
 ```
 find shower
@@ -126,6 +158,10 @@ Here are the matching tasks in your list:
 
 Shows a list of all commands and their usage
 
+Format:
+```
+help
+```
 Example:
 ```
 help
@@ -148,6 +184,10 @@ bye
 
 Exits the program
 
+Format:
+```
+bye
+```
 Example:
 ```
 bye

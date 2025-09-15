@@ -9,6 +9,10 @@ public class Meal {
     private TaskList tasks;
     private Ui ui;
 
+    /**
+     * Initialises a new meal application with the given storage filepath
+     * @param filePath the file path where the tasks are stored
+     */
     public Meal(String filePath) {
         ui = new Ui();
         storage = new Storage(filePath);
@@ -20,6 +24,9 @@ public class Meal {
         }
     }
 
+    /**
+     * Runs the main loop of the app
+     */
     public void run() {
         ui.showWelcome();
         boolean shouldExit = false;
