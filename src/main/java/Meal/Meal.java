@@ -36,7 +36,7 @@ public class Meal {
     }
 
     public static void main(String[] args) {
-        new Meal("data/duke.txt").run();
+        new Meal("data/mealapp.txt").run();
     }
 
 }

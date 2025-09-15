@@ -2,10 +2,10 @@ package Meal;
 
 import javafx.application.Platform;
 
-public class Duke {
-    private final Storage storage = new Storage("data/duke.txt");
+public class MealApp {
+    private final Storage storage = new Storage("data/mealapp.txt");
     private final TaskList tasks;
-    public Duke() {
+    public MealApp() {
         tasks = new TaskList(storage.load());
     }
 
