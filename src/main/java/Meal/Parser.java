@@ -100,7 +100,7 @@ class UnmarkCommand implements Command {
 }
 
 /**
- * Delete command deletes the n-th task from the list
+ * Delete command deletes the n-th task from list
  */
 class DeleteCommand implements Command {
     private final int n; // 1-based
