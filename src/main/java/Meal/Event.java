@@ -12,7 +12,7 @@ public class Event extends Task {
     private static final DateTimeFormatter PRETTY = DateTimeFormatter.ofPattern("MMM d yyyy");
 
     /**
-     * Event constructor
+     * Constructor for event
      * @param taskName name of event
      * @param startTime start time of event
      * @param endTime end time of event
