@@ -23,7 +23,7 @@ public class GuiUi extends Ui {
     }
 
     /**
-     * Displays an error message showing loading failed
+     * Displays an error message saying loading failed
      */
     @Override
     public void showLoadingError() {
