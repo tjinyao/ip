@@ -23,7 +23,7 @@ public class Task {
 
     /**
      * Marks a task as done
-     * @return a confirmation message saying the task is marked
+     * @return a confirmation message saying task is marked
      */
     public String mark() {
         this.marked = true;
