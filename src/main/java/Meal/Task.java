@@ -15,7 +15,7 @@ public class Task {
 
     /**
      * Returns the name of the task
-     * @return the task name
+     * @return name of the task
      */
     public String getTaskName() {
         return this.taskName;
